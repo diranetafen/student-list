@@ -63,7 +63,7 @@ Your work is to build one container for each module an make them interact with e
 
 Application source code can be found [here](https://github.com/diranetafen/student-list.git "here")
 
-The files that you must provide (in your delivery) are ***Dockerfile*** and* ** docker-compose.yml***  (currently both are empty)
+The files that you must provide (in your delivery) are ***Dockerfile*** and ***docker-compose.yml***  (currently both are empty)
 
 Now it is time to explain you each file's role:
 
