@@ -17,7 +17,6 @@
             <?php
               if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['submit']))
               {
-              $student_name = $_POST['student_name'];
               $username = getenv('USERNAME');
               $password = getenv('PASSWORD');
               if ( empty($username) ) $username = 'fake_username';
