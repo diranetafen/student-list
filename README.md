@@ -119,7 +119,7 @@ Build your image and try to run it (don't forget to mount *student_age.json* fil
 
 Run this command to make sure that the API correctly responding (take a screenshot for delivery purpose)
 
-`curl -u toto:python -X GET http://:<host IP><API exposed port>/pozos/api/v1.0/get_student_ages`
+`curl -u toto:python -X GET http://<host IP>:<API exposed port>/pozos/api/v1.0/get_student_ages`
 
 **Congratulation! Now you are ready for the next step (docker-compose.yml)**
 
