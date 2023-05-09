@@ -82,7 +82,7 @@ POZOS will give you information to build the API container
 
 - Base image
 
-To build API image you must use "python:2.7-stretch"
+To build API image you must use "python:2.7-buster"
 
 - Maintainer
 
