@@ -69,10 +69,14 @@ Now it is time to explain you each file's role:
 
 - docker-compose.yml: to launch the application (API and web app)
 - Dockerfile: the file that will be used to build the API image (details will be given)
+- requirements.txt: contains all the packages to be installed to run the application
 - student_age.json: contain student name with age on JSON format
 - student_age.py: contains the source code of the API in python
 - index.php: PHP  page where end-user will be connected to interact with the service to - list students with age. You need to update the following line before running the website container to make ***api_ip_or_name*** and ***port*** fit your deployment
-   ` $url = 'http://<api_ip_or_name:port>/pozos/api/v1.0/get_student_ages';`
+
+```bash 
+ $url = 'http://<api_ip_or_name:port>/pozos/api/v1.0/get_student_ages';
+ ```
 
 
 
@@ -82,7 +86,7 @@ POZOS will give you information to build the API container
 
 - Base image
 
-To build API image you must use "python:2.7-buster"
+To build API image you must use "python:3.8-buster"
 
 - Maintainer
 
@@ -94,10 +98,13 @@ You need to copy the source code of the API in the container at the root "/" pat
 
 - Prerequisite
 
-The API is using FLASK engine,  here is a list of the package you need to install
-```
-apt update -y && apt install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
-pip install flask==1.1.2 flask_httpauth==4.1.0 flask_simpleldap python-dotenv==0.14.0
+The API is using FLASK engine,  you need to install some package 
+Copy the requirements.txt file into the container in the root "/" directory to install the packages needed to start up our application
+
+to launch the installation, use this command
+
+```bash
+pip3 install -r /requirements.txt
 ```
 - Persistent data (volume)
 
@@ -112,14 +119,16 @@ To interact with this API expose 5000 port
 - CMD
 
 When container start, it must run the student_age.py (copied at step 4), so it should be something like
-
-`CMD [ "python", "./student_age.py" ]`
+```bash 
+CMD [ "python", "./student_age.py" ]
+```
 
 Build your image and try to run it (don't forget to mount *student_age.json* file at */data/student_age.json* in the container), check logs and verify that the container is listening and is  ready to answer
 
 Run this command to make sure that the API correctly responding (take a screenshot for delivery purpose)
-
-`curl -u toto:python -X GET http://<host IP>:<API exposed port>/pozos/api/v1.0/get_student_ages`
+```bash 
+curl -u toto:python -X GET http://<host IP>:<API exposed port>/pozos/api/v1.0/get_student_ages
+```
 
 **Congratulation! Now you are ready for the next step (docker-compose.yml)**
 
@@ -140,6 +149,7 @@ The ***docker-compose.yml*** file will deploy two services :
    - image: the name of the image builded previously
    - volumes: You will mount student_age.json file in /data/student_age.json
    - port: don't forget to expose the port
+   - networks: don't forget to add specific network for your project
 
 Delete your previous created container
 
