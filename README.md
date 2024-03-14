@@ -27,9 +27,9 @@ The innovation department want to disrupt the existing infrastructure to ensure 
 
 it can be scalable, easily deployed with a maximum of automation.
 
-POZOS wants you to build a **POC** to show how docker can help you and how much this technology is efficient.
+POZOS wants you to build a "**POC**" to show how docker can help you and how much this technology is efficient.
 
-For this POC, POZOS will give you an application and want you to build a "decouple" infrastructure based on **Docker**.
+For this POC, POZOS will give you an application and want you to build a "decouple" infrastructure based on "**Docker**".
 
 Currently, the application is running on a single server with any scalability and any high availability.
 
@@ -99,6 +99,9 @@ You need to copy the source code of the API in the container at the root "/" pat
 - Prerequisite
 
 The API is using FLASK engine,  you need to install some package 
+```bash
+apt update -y && apt install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y
+```
 Copy the requirements.txt file into the container in the root "/" directory to install the packages needed to start up our application
 
 to launch the installation, use this command
@@ -120,12 +123,14 @@ To interact with this API expose 5000 port
 
 When container start, it must run the student_age.py (copied at step 4), so it should be something like
 ```bash 
-CMD [ "python", "./student_age.py" ]
+CMD [ "python3", "./student_age.py" ]
 ```
 
 Build your image and try to run it (don't forget to mount *student_age.json* file at */data/student_age.json* in the container), check logs and verify that the container is listening and is  ready to answer
 
 Run this command to make sure that the API correctly responding (take a screenshot for delivery purpose)
+NB: Start your container using this specific port to reach it
+Port: 5000
 ```bash 
 curl -u toto:python -X GET http://<host IP>:<API exposed port>/pozos/api/v1.0/get_student_ages
 ```
@@ -174,9 +179,8 @@ Don't forget to push your image on your private registry and show them in your d
 
 ## Delivery (4 points)
 
-Your delivery must be zip named firstname.zip (replace firstname by your own) that contain:
-
-- A doc or PDF file with your screenshots and explanations.
+Your delivery must be link of your repository with your name that contain:
+- A README file with your screenshots and explanations.
 - Configuration files used to realize the graded exercise (docker-compose.yml and Dockerfile).
 
 Your delivery will be evaluated on:
@@ -184,6 +188,7 @@ Your delivery will be evaluated on:
 - Explanations quality
 - Screenshots quality (relevance, visibility)
 - Presentation quality
+- The structure of your github repository
 
 Send your delivery at ***eazytrainingfr@gmail.com*** and we will provide you the link of the solution.
 
