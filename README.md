@@ -43,7 +43,7 @@ For this POC, you will only use one single machine with a docker installed on it
 
 The build and the deployment will be made on this machine.
 
-POZOS recommends you to use centos7.6 OS because it's the most used in the company.
+POZOS recommends you to use ubuntu OS because it's the most used in the company.
 
 Please also note that you are authorized to use a virtual machine base on Centos7.6 and not your physical machine.
 
@@ -86,7 +86,7 @@ POZOS will give you information to build the API container
 
 - Base image
 
-To build API image you must use "python:3.8-buster"
+To build API image you must use "python:3.13-slim"
 
 - Maintainer
 
