@@ -1,5 +1,5 @@
-flask==2.0.0
-flask_httpauth==4.1.0
-flask_simpleldap
+flask==2.3.3
+flask_httpauth==4.8.0
+flask-simpleldap==2.1.0
 python-dotenv==0.14.0
-Werkzeug==2.0.0 
+Werkzeug==2.3.7 

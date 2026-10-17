@@ -150,6 +150,12 @@ The ***docker-compose.yml*** file will deploy two services :
 `./website:/var/www/html`
    - depend on: you need to make sure that the API will start first before the website
    - port: do not forget to expose the port
+   - Don't forget to update this file index.php: PHP  page where end-user will be connected to interact with the service to - list students with age. You need to update the following line before running the website container to make ***api_ip_or_name*** and ***port*** fit your deployment
+   NB: It's necessary to establish the communication with the backend container
+
+   ```bash 
+   $url = 'http://<api_ip_or_name:port>/pozos/api/v1.0/get_student_ages';
+   ```
 - API: the image builded before should be used with the following specification
    - image: the name of the image builded previously
    - volumes: You will mount student_age.json file in /data/student_age.json
